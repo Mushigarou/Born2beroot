@@ -1,8 +1,0 @@
-check if you have ssh :
-    # which ssh
-package :
-    # apt search openssh-client (Installed Automatically)
-
-since client package is installed
-    # ssh [user]@[hostname] (optional) -p [port]
-    # tail -f /var/log/auth.log (to see error why ssh doesn't work)
