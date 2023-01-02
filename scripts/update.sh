@@ -9,5 +9,5 @@ fi
 
 if grep -q "Ubuntu" $os_release || grep -q "Debian" $os_release
 then
-    sudo apt update && sudo apt dist-upgrade
+    sudo apt update -y && sudo apt dist-upgrade -y
 fi
