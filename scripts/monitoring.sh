@@ -1,12 +1,12 @@
 #!/bin/bash
 
 check_lvm(){
-        if lsblk | awk '{print $6}'| grep "lvm" &> /dev/null
-        then
-                lvm=yes
-        else
-                lvm=no
-        fi
+    if lsblk | awk '{print $6}'| grep "lvm" &> /dev/null
+    then
+            lvm=yes
+    else
+            lvm=no
+    fi
 }
 
 arch=$(uname -a)
@@ -18,9 +18,11 @@ vcpu=$(cat /proc/cpuinfo | grep "processor" | wc -l)
 
 memory_mega=$(df -h --total --block-size=1M | awk 'END {print $3}')
 
-memory=$(df -h --total  | awk 'END {printf("/%s (%s)\n", $2, $5)}')
+memory=$(df -h --total  | awk 'END {printf("/%sb (%s)\n", $2, $5)}')
 
-ram=$(free --mega | grep Mem | awk '{printf("%s/%sGb (%.f%%)\n", $3, $4/1000, ($3/$4)*100)}')
+ram=$(free --mega | grep Mem | awk '{printf("%s/%sMB (%.2f%%)\n", $3, $4, ($3/$4)*100)}')
+
+cpu_load=$(top -n1 | grep -w "%Cpu(s):" | awk '{printf("%.1f%%", $2+$4+$5)}')
 
 reboot_date=$(last -x --time-format iso | grep reboot | awk 'NR == 1 {print $5}' | awk -F 'T' '{print $1}')
 
@@ -39,10 +41,7 @@ echo "#CPU physical: $cpu"
 echo "#vCPU: $vcpu"
 echo "#Memory Usage: $ram"
 echo "#Disk Usage: $memory_mega$memory"
-echo "#CPU load:"
+echo "#CPU load: $cpu_load"
 echo "#Last boot: $reboot_date $reboot_time"
 echo "#LVM use: `echo $lvm`"
 echo "#Connections TCP :"
-echo "#User log: $users"
-echo "#Network: IP $inet ($mac)"
-echo "#Sudo :"
