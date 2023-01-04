@@ -63,18 +63,27 @@
             be visible.
 
             -The architecture of your operating system and its kernel version.
-            •The number of physical processors.
-            •The number of virtual processors.
+                # uname -mrs
+            •The number of physical processors, The number of virtual processors.
+                # lscpu
             •The current available RAM on your server and its utilization rate as a percentage.
+                # free -m
             •The current available memory on your server and its utilization rate as a percentage.
+                # df -h
             •The current utilization rate of your processors as a percentage.
+                # top
             •The date and time of the last reboot.
+                # last -x | grep reboot
             •Whether LVM is active or not.
+                # vgdisplay
             •The number of active connections.
+                # netstat -n
             •The number of users using the server.
+                # who
             •The IPv4 address of your server and its MAC (Media Access Control) address.
+                # ip addr
             •The number of commands executed with the sudo program.
-
+                grep -c 'sudo' /var/log/sudo.log
         - During the defense, you will be asked to explain how this script
             works. You will also have to interrupt it without modifying it.
             Take a look at cron.

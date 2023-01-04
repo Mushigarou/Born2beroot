@@ -26,6 +26,12 @@ https://www.sudo.ws/docs/man/1.9.2/sudoers.man/#defaults
     # export VISUAL=vim; visudo
     # export VISUAL=nano; visudo
 
+**************** DEFAULTS LOGFILE ***************************
+#logfile
+    - Path to the sudo log file (not the syslog log file). 
+    - Setting a path turns on logging to a file; 
+    - negating this option turns it off. By default, sudo logs via syslog.
+
 *******************************************************
 
 # Showing what user can do with sudo   
