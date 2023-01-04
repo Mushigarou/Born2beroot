@@ -1,12 +1,12 @@
 #!/bin/bash
 
 check_lvm(){
-    if lsblk | awk '{print $6}'| grep "lvm" &> /dev/null
-    then
-            lvm=yes
-    else
-            lvm=no
-    fi
+        if lsblk | awk '{print $6}'| grep "lvm" &> /dev/null
+        then
+                lvm=yes
+        else
+                lvm=no
+        fi
 }
 
 arch=$(uname -a)
@@ -32,7 +32,11 @@ inet=$(/usr/sbin/ifconfig | grep -w inet | grep -w broadcast | awk 'NR==1 {print
 
 mac=$(/usr/sbin/ifconfig | grep -w ether | awk 'NR==1 {print $2}')
 
-users=$(who | wc -l)
+connections_estab=$(ss -t | grep -w "ESTAB" | wc -l)
+
+users_log=$(who | wc -l)
+
+sudo_command=$(cat /var/log/sudo/sudo.log | grep -w "TSID" | wc -l)
 
 check_lvm
 
@@ -44,4 +48,7 @@ echo "#Disk Usage: $memory_mega$memory"
 echo "#CPU load: $cpu_load"
 echo "#Last boot: $reboot_date $reboot_time"
 echo "#LVM use: `echo $lvm`"
-echo "#Connections TCP :"
+echo "#Connections TCP : $connections_estab ESTABLISHED"
+echo "#User log: $users_log"
+echo "#Network: IP $inet ($mac)"
+echo "#Sudo : $sudo_command"
