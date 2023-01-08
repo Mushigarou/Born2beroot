@@ -15,6 +15,9 @@ Kill a processes :
     # pgrep [processes] (returns PID)
     # kill [PID] (kill process)
 
+to display the processes that are using a specific file, socket, or network port :
+    # fuser [port]/[protocol(tcp, udp...)]
+
 ps -aux :
     # a : all users
     # x : processes not executed of that terminal running

@@ -5,3 +5,6 @@ terminal session where you can enter commands and interact with the system.
 
 # If tty is enabled, this command will list the tty devices on your system
     - ls /dev/tty*
+
+# To disable tty terminal
+    # /etc/systemd/logind.conf

@@ -21,6 +21,7 @@ to modify something use :
 to swith users :
     # su - (root user) // sudo su - (log as a root without a user)
     # su [username]
+    # sudo -i (don't ask for password of root)
 
 To add a user to the sudoers file :
     # [username] ALL = ALL (all commands, or specify by /bin/ls...)
