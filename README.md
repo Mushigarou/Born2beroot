@@ -18,7 +18,7 @@
 - differences between aptitude and apt, or what SELinux or AppArmor
 
 ### SSH
-- SSH service will be runing on port 4242
+- SSH service will be runing on port 4141
 - Connection with root via ssh should not be possible
 - Configure your operating system with the UFW (or firewalld for Rocky)
 - Your firewall must be active when you launch your virtual machine.
@@ -118,5 +118,3 @@
 - Set up a service of your choice (justify your choice)
 	- NGINX / Apache2 excluded!
 	- To complete bonus part, you may open more ports to suit your needs. Of course, the UFW/Firewalld rules has to be adapted accordingly.
-
-### You only have to turn in a signature.txt file at the root of your Git repository.
